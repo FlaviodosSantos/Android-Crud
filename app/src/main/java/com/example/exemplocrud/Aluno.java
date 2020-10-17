@@ -1,4 +1,4 @@
-package com.example.exemplocrud;
+package com.example.ExemploCRUD;
 
 import java.io.Serializable;
 
@@ -42,7 +42,5 @@ public class Aluno implements Serializable {
     }
 
     @Override
-    public String toString(){
-        return nome;
-    }
+    public String toString(){ return nome; }
 }

@@ -1,4 +1,4 @@
-package com.example.exemplocrud;
+package com.example.ExemploCRUD;
 
 import org.junit.Test;
 

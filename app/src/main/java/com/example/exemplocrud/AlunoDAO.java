@@ -1,4 +1,4 @@
-package com.example.exemplocrud;
+package com.example.ExemploCRUD;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -28,9 +28,8 @@ public class AlunoDAO {
 
     public List<Aluno> obterTodos(){
         List<Aluno> alunos = new ArrayList<>();
-        Cursor cursor = banco.query("aluno", new String[]{"id", "nome", "cpf", "telefone"},
-                null,null,null,null,null);
-
+        Cursor cursor = banco.query("aluno", new String[]{"id","nome","cpf","telefone"}, null,
+                null, null, null,null);
         while (cursor.moveToNext()){
             Aluno a = new Aluno();
             a.setId(cursor.getInt(0));
@@ -40,5 +39,18 @@ public class AlunoDAO {
             alunos.add(a);
         }
         return alunos;
+    }
+
+    public void excluir(Aluno a){
+        banco.delete("aluno", "id = ?", new String[]{a.getId().toString()});
+    }
+
+    public void atualizar(Aluno aluno){
+        ContentValues values = new ContentValues();
+        values.put("nome", aluno.getNome());
+        values.put("cpf", aluno.getCpf());
+        values.put("telefone", aluno.getTelefone());
+        banco.update("aluno", values, "id = ?",
+                new String[]{aluno.getId().toString()});
     }
 }
